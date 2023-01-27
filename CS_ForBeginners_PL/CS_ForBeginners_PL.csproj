@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CS_ForBegginers_BL\CS_ForBeginners_BL.csproj" />
+    <ProjectReference Include="..\CS_ForBeginners_BL\CS_ForBeginners_BL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CS_ForBegginers_DAL\CS_ForBeginners_DAL.csproj" />
+    <ProjectReference Include="..\CS_ForBeginners_DAL\CS_ForBeginners_DAL.csproj" />
   </ItemGroup>
 
 </Project>

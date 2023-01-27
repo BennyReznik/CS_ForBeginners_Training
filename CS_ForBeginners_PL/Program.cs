@@ -1,11 +1,11 @@
-﻿using CS_ForBeginners_BL.Managers;
+﻿using System;
+using System.Collections.Generic;
+using CS_ForBeginners_BL.Managers;
 using CS_ForBeginners_BL.Models;
 using CS_ForBeginners_Pl;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 
-namespace CS_ForBegginers_Training
+namespace CS_ForBeginners_PL
 {
     internal class Program
     {

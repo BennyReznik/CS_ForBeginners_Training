@@ -2,7 +2,6 @@
 using CS_ForBeginners_BL.Models;
 using CS_ForBeginners_DAL.Entities;
 using CS_ForBeginners_DAL.Repositories;
-using System;
 using System.Collections.Generic;
 
 namespace CS_ForBeginners_BL.Managers
