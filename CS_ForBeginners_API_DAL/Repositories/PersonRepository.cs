@@ -1,18 +1,18 @@
 ﻿using CS_ForBeginners_API_DAL.Entities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json.Serialization;
-using Newtonsoft.Json;
+using System.Linq;
 
 namespace CS_ForBeginners_API_DAL.Repositories
 {
-    internal class PersonRepository : IPersonRepository
+    public class PersonRepository : IPersonRepository
     {
         private const string FileName = "peopleApi.json";
         private readonly List<PersonEntity> _allPeople;
 
-        internal PersonRepository()
+        public PersonRepository()
         {
             if (File.Exists(FileName))
             {
@@ -34,27 +34,37 @@ namespace CS_ForBeginners_API_DAL.Repositories
 
         public void AddPerson(PersonEntity person)
         {
-            throw new NotImplementedException();
+            _allPeople.Add(person);
+            PersistToFile();
         }
 
         public void DeletePerson(int id)
         {
-            throw new NotImplementedException();
+            var index = _allPeople.FindIndex(p => p.Id == id);
+            _allPeople.RemoveAt(index);
+            PersistToFile();
         }
 
         public IEnumerable<PersonEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return _allPeople;
         }
 
         public PersonEntity GetById(int id)
         {
-            throw new NotImplementedException();
+            return _allPeople.FirstOrDefault(p => p.Id == id);
         }
 
         public void UpdatePerson(PersonEntity person)
         {
-            throw new NotImplementedException();
+            DeletePerson(person.Id);
+            AddPerson(person);
+        }
+
+        private void PersistToFile()
+        {
+            var json = JsonConvert.SerializeObject(_allPeople);
+            File.WriteAllText("people.json", json);
         }
     }
 }
