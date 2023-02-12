@@ -1,18 +1,19 @@
 ﻿using CS_ForBeginners_BL.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CS_ForBeginners_BL.Managers
 {
     public interface IPersonManager
     {
-        void AddPerson(PersonModel person);
+        Task AddPerson(PersonModel person);
 
-        void DeletePerson(int id);
+        Task DeletePerson(int id);
 
-        IEnumerable<PersonModel> GetAll();
+        Task<IEnumerable<PersonModel>> GetAll();
 
-        PersonModel GetById(int id);
+        Task<PersonModel> GetById(int id);
 
-        void UpdatePerson(PersonModel person);
+        Task UpdatePerson(PersonModel person);
     }
 }

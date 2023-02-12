@@ -20,9 +20,9 @@ namespace CS_ForBeginners_API_PL
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(Startup).Assembly);
+            services.AddAutoMapper(typeof(Startup).Assembly, typeof(IPersonManager).Assembly);
             services.AddControllers();
-            services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddSingleton<IPersonRepository, PersonRepository>();
             services.AddScoped<IPersonManager, PersonManager>();
         }
 

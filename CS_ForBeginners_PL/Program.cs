@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using CS_ForBeginners_BL.Managers;
+﻿using CS_ForBeginners_BL.Managers;
 using CS_ForBeginners_BL.Models;
 using CS_ForBeginners_Pl;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CS_ForBeginners_PL
 {
@@ -15,7 +16,7 @@ namespace CS_ForBeginners_PL
         /// This projects output is an executable file that is used to run the application
         /// </summary>
         /// <param name="args"></param>
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             DependencyInjectionPl.AddDependencies();
 
@@ -43,7 +44,7 @@ namespace CS_ForBeginners_PL
                     case 1:
                         {
                             // Get all people
-                            var people = personManager.GetAll();
+                            var people = await personManager.GetAll();
                             PrintListOfPeople(people);
                             break;
                         }
@@ -57,7 +58,7 @@ namespace CS_ForBeginners_PL
                             Console.WriteLine("Enter Age");
                             var age = Convert.ToInt32(Console.ReadLine());
                             var person = new PersonModel(id, name, age);
-                            personManager.AddPerson(person);
+                            await personManager.AddPerson(person);
                             Console.WriteLine("Person Added");
                             break;
                         }
@@ -80,7 +81,7 @@ namespace CS_ForBeginners_PL
                             Console.WriteLine("Enter Age");
                             var age = Convert.ToInt32(Console.ReadLine());
                             var person = new PersonModel(id, name, age);
-                            personManager.UpdatePerson(person);
+                            await personManager.UpdatePerson(person);
                             Console.WriteLine("Person Updated");
                             break;
                         }
@@ -89,7 +90,7 @@ namespace CS_ForBeginners_PL
                             // Delete person
                             Console.WriteLine("Person Id");
                             var id = Convert.ToInt32(Console.ReadLine());
-                            personManager.DeletePerson(id);
+                            await personManager.DeletePerson(id);
                             Console.WriteLine("Person Deleted");
                             break;
                         }

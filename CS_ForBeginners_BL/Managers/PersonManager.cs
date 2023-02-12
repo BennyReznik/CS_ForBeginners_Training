@@ -3,6 +3,7 @@ using CS_ForBeginners_BL.Models;
 using CS_ForBeginners_DAL.Entities;
 using CS_ForBeginners_DAL.Repositories;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CS_ForBeginners_BL.Managers
 {
@@ -17,35 +18,35 @@ namespace CS_ForBeginners_BL.Managers
             _personRepository = personRepository;
         }
 
-        public void AddPerson(PersonModel person)
+        public async Task AddPerson(PersonModel person)
         {
             var mappedPerson = _mapper.Map<PersonEntity>(person);
-            _personRepository.AddPerson(mappedPerson);
+            await _personRepository.AddPerson(mappedPerson);
         }
 
-        public void DeletePerson(int id)
+        public async Task DeletePerson(int id)
         {
-            _personRepository.DeletePerson(id);
+            await _personRepository.DeletePerson(id);
         }
 
-        public IEnumerable<PersonModel> GetAll()
+        public async Task<IEnumerable<PersonModel>> GetAll()
         {
-            var peopleEntities = _personRepository.GetAll();
+            var peopleEntities = await _personRepository.GetAll();
             var mappedPeople = _mapper.Map<IEnumerable<PersonModel>>(peopleEntities);
             return mappedPeople;
         }
 
-        public PersonModel GetById(int id)
+        public async Task<PersonModel> GetById(int id)
         {
-            var personEntity = _personRepository.GetById(id);
+            var personEntity = await _personRepository.GetById(id);
             var mappedPerson = _mapper.Map<PersonModel>(personEntity);
             return mappedPerson;
         }
 
-        public void UpdatePerson(PersonModel person)
+        public async Task UpdatePerson(PersonModel person)
         {
             var mappedPerson = _mapper.Map<PersonEntity>(person);
-            _personRepository.UpdatePerson(mappedPerson);
+            await _personRepository.UpdatePerson(mappedPerson);
         }
     }
 }

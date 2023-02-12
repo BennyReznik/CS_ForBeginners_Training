@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CS_ForBeginners_DAL.Repositories
 {
@@ -35,39 +36,39 @@ namespace CS_ForBeginners_DAL.Repositories
             }
         }
 
-        public void AddPerson(PersonEntity person)
+        public async Task AddPerson(PersonEntity person)
         {
             _allPeople.Add(person);
-            PersistToFile();
+            await PersistToFile();
         }
 
-        public void DeletePerson(int id)
+        public async Task DeletePerson(int id)
         {
             var index = _allPeople.FindIndex(p => p.Id == id);
             _allPeople.RemoveAt(index);
-            PersistToFile();
+            await PersistToFile();
         }
 
-        public IEnumerable<PersonEntity> GetAll()
+        public async Task<IEnumerable<PersonEntity>> GetAll()
         {
-            return _allPeople;
+            return await Task.FromResult(_allPeople);
         }
 
-        public PersonEntity GetById(int id)
+        public async Task<PersonEntity> GetById(int id)
         {
-            return _allPeople.FirstOrDefault(p => p.Id == id);
+            return await Task.FromResult(_allPeople.FirstOrDefault(p => p.Id == id));
         }
 
-        public void UpdatePerson(PersonEntity person)
+        public async Task UpdatePerson(PersonEntity person)
         {
-            DeletePerson(person.Id);
-            AddPerson(person);
+            await DeletePerson(person.Id);
+            await AddPerson(person);
         }
 
-        private void PersistToFile()
+        private async Task PersistToFile()
         {
             var json = JsonConvert.SerializeObject(_allPeople);
-            File.WriteAllText("people.json", json);
+            await File.WriteAllTextAsync("people.json", json);
         }
     }
 }

@@ -1,18 +1,19 @@
 ﻿using CS_ForBeginners_DAL.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CS_ForBeginners_DAL.Repositories
 {
     public interface IPersonRepository
     {
-        IEnumerable<PersonEntity> GetAll();
+        Task<IEnumerable<PersonEntity>> GetAll();
 
-        PersonEntity GetById(int id);
+        Task<PersonEntity> GetById(int id);
 
-        void AddPerson(PersonEntity person);
+        Task AddPerson(PersonEntity person);
 
-        void UpdatePerson(PersonEntity person);
+        Task UpdatePerson(PersonEntity person);
 
-        void DeletePerson(int id);
+        Task DeletePerson(int id);
     }
 }

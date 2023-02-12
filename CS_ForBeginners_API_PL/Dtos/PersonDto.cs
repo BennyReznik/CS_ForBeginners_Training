@@ -4,6 +4,11 @@ namespace CS_ForBeginners_API_PL.Dtos
 {
     public class PersonDto
     {
+        public PersonDto()
+        {
+
+        }
+
         public PersonDto(int id, string name, int age)
         {
             Id = id;
