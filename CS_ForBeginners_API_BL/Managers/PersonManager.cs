@@ -19,6 +19,15 @@ namespace CS_ForBeginners_API_BL.Managers
 
         public void AddPerson(PersonModel person)
         {
+            if (person.Age > 30)
+            {
+                // add to 30+ list
+            }
+            if (person.Age > 60)
+            {
+                // add to 30+ list
+            }
+
             _personRepository.AddPerson(_mapper.Map<PersonEntity>(person));
         }
 
@@ -31,7 +40,7 @@ namespace CS_ForBeginners_API_BL.Managers
         {
             return _mapper.Map<IEnumerable<PersonModel>>(_personRepository.GetAll());
         }
-
+        
         public PersonModel GetById(int id)
         {
             return _mapper.Map<PersonModel>(_personRepository.GetById(id));

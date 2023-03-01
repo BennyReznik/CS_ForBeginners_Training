@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_ForBeginners_BL", "CS_Fo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_ForBeginners_DAL", "CS_ForBeginners_DAL\CS_ForBeginners_DAL.csproj", "{D894BDC3-1EA0-4335-9A13-10002C89465D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_ForBeginners_BL.UnitTest", "CS_ForBeginners_BL.UnitTest\CS_ForBeginners_BL.UnitTest.csproj", "{D0A9747B-C52D-4712-B684-FB7ADA3E6F75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{D894BDC3-1EA0-4335-9A13-10002C89465D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D894BDC3-1EA0-4335-9A13-10002C89465D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D894BDC3-1EA0-4335-9A13-10002C89465D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0A9747B-C52D-4712-B684-FB7ADA3E6F75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0A9747B-C52D-4712-B684-FB7ADA3E6F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0A9747B-C52D-4712-B684-FB7ADA3E6F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0A9747B-C52D-4712-B684-FB7ADA3E6F75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

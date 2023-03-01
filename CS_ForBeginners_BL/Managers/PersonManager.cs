@@ -1,8 +1,10 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using CS_ForBeginners_BL.Models;
 using CS_ForBeginners_DAL.Entities;
 using CS_ForBeginners_DAL.Repositories;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CS_ForBeginners_BL.Managers
@@ -47,6 +49,28 @@ namespace CS_ForBeginners_BL.Managers
         {
             var mappedPerson = _mapper.Map<PersonEntity>(person);
             await _personRepository.UpdatePerson(mappedPerson);
+        }
+
+        public async Task<decimal> GetPeopleAverageAge()
+        {
+            var peopleEntities = await _personRepository.GetAll();
+            var mappedPeople = _mapper.Map<IEnumerable<PersonModel>>(peopleEntities);
+
+            return GetAverageAge(mappedPeople);
+        }
+
+        private decimal GetAverageAge(IEnumerable<PersonModel> people)
+        {
+            var sum = 0;
+            var count = 0;
+
+            foreach (var personModel in people)
+            {
+                sum += personModel.Age;
+                count++;
+            }
+
+            return sum / count;
         }
     }
 }
